@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import RichText from '@/components/rich-text-renderer'
+import styles from '@/app/(frontend)/blog/[slug]/page.module.css'
 
 export interface BlogPostPageProps {
   params: Promise<{
@@ -34,23 +35,26 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) return notFound()
 
   return (
-    <div className="blog-post-container">
-      <div className="blog-post-header">
-        <Link href="/blog" className="back-link">
-          ← Back to all posts
+    <div className={styles.root}>
+      <div className={styles.header}>
+        <Link className={styles.backLink} href="/blog">
+          ← Back
         </Link>
-        <h1>{post.title}</h1>
 
-        <div className="blog-post-meta">
-          {post.author && (
-            <span className="author">By {post.author.toString() || 'Unknown Author'}</span>
-          )}
+        <h1 className={styles.title}>{post.title}</h1>
 
-          {post['date-published'] && <span className="date">{post['date-published']}</span>}
-        </div>
+        {post.author && (
+          <p className={styles.author}>By {post.author.toString() || 'Unknown Author'}</p>
+        )}
+
+        {post['date-published'] && <p className={styles.date}>{post['date-published']}</p>}
       </div>
 
-      <div className="blog-post-content">{post.content && <RichText data={post.content} />}</div>
+      {post.content && (
+        <div className={styles.content}>
+          <RichText data={post.content} />
+        </div>
+      )}
     </div>
   )
 }
