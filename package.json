@@ -12,7 +12,10 @@
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "docker": "pnpm docker:build && pnpm docker:run",
+    "docker:build": "docker build --tag next-docker .",
+    "docker:run": "docker run --publish 3000:3000 next-docker"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "latest",
