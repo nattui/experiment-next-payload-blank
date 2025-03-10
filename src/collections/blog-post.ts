@@ -6,6 +6,7 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
+import { generatePreviewPath } from '@/collections/generate-preview-path'
 
 export const BlogPost: CollectionConfig = {
   slug: 'blog-post',
@@ -15,9 +16,19 @@ export const BlogPost: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'author', 'date-published'],
-    preview: (data) => `/blog/${data?.slug}`,
+    preview: (data, { req }) =>
+      generatePreviewPath({
+        slug: typeof data?.slug === 'string' ? data.slug : '',
+        collection: 'blog-post',
+        req,
+      }),
     livePreview: {
-      url: ({ data }) => `/blog/${data?.slug}`,
+      url: ({ data, req }) =>
+        generatePreviewPath({
+          slug: typeof data?.slug === 'string' ? data.slug : '',
+          collection: 'blog-post',
+          req,
+        }),
     },
   },
   fields: [

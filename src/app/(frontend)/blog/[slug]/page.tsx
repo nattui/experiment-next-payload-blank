@@ -44,10 +44,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <h1 className={styles.title}>{post.title}</h1>
 
         {post.author && typeof post.author === 'object' && 'name' in post.author && (
-          <p className={styles.author}>By {post.author.name}</p>
+          <p className={styles.author}>
+            By {post.author.name} <span style={{ color: '#8e8c8f' }}>· {post.author.title}</span>
+          </p>
         )}
 
-        {post['date-published'] && <p className={styles.date}>{post['date-published']}</p>}
+        {post['date-published'] && (
+          <p className={styles.date}>
+            {new Date(post['date-published']).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </p>
+        )}
       </div>
 
       {post.content && (
