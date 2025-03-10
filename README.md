@@ -1,8 +1,3 @@
-# blank
+Make new collections
 
-blank
-
-## Attributes
-
-- **Database**: mongodb
-- **Storage Adapter**: localDisk
+add collection to `payload.config.ts` in `collections` array
