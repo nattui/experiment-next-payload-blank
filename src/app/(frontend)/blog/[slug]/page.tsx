@@ -5,6 +5,8 @@ import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import RichText from '@/components/rich-text-renderer'
 import styles from '@/app/(frontend)/blog/[slug]/page.module.css'
+import { draftMode } from 'next/headers'
+import { LivePreviewListener } from '@/app/(frontend)/blog/[slug]/live-preview-listener'
 
 export interface BlogPostPageProps {
   params: Promise<{
@@ -15,11 +17,13 @@ export interface BlogPostPageProps {
 const payload = await getPayload({ config: configPromise })
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { isEnabled: draft } = await draftMode()
+
   const { slug } = await params
 
   const result = await payload.find({
     collection: 'blog-post',
-    draft: false,
+    draft,
     limit: 1,
     overrideAccess: false,
     pagination: false,
@@ -36,6 +40,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <div className={styles.root}>
+      {draft && <LivePreviewListener />}
+
       <div className={styles.header}>
         <Link className={styles.backLink} href="/blog">
           ← Back
