@@ -157,6 +157,7 @@ export interface Media {
 export interface BlogPost {
   id: number;
   title: string;
+  slug: string;
   author?: (number | null) | User;
   'date-published'?: string | null;
   content?: {
@@ -277,6 +278,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface BlogPostSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   author?: T;
   'date-published'?: T;
   content?: T;
