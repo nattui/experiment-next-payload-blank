@@ -20,6 +20,14 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    meta: {
+      icons: [
+        {
+          rel: 'icon',
+          url: '/favicon.ico',
+        },
+      ],
+    },
   },
   collections: [Users, Media, BlogPost, BlogPostAuthor],
   editor: lexicalEditor(),
