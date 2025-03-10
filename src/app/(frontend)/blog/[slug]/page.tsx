@@ -6,9 +6,9 @@ import configPromise from '@payload-config'
 import RichText from '@/components/rich-text-renderer'
 
 export interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 const payload = await getPayload({ config: configPromise })
