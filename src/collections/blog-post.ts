@@ -34,7 +34,7 @@ export const BlogPost: CollectionConfig = {
     {
       hasMany: false,
       name: 'author',
-      relationTo: 'users',
+      relationTo: 'blog-post-author',
       type: 'relationship',
     },
     {

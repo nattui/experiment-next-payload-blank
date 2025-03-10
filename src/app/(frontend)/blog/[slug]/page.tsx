@@ -43,8 +43,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         <h1 className={styles.title}>{post.title}</h1>
 
-        {post.author && (
-          <p className={styles.author}>By {post.author.toString() || 'Unknown Author'}</p>
+        {post.author && typeof post.author === 'object' && 'name' in post.author && (
+          <p className={styles.author}>By {post.author.name}</p>
         )}
 
         {post['date-published'] && <p className={styles.date}>{post['date-published']}</p>}

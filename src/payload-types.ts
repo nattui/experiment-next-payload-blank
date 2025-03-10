@@ -69,6 +69,7 @@ export interface Config {
     users: User;
     media: Media;
     'blog-post': BlogPost;
+    'blog-post-author': BlogPostAuthor;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -78,6 +79,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'blog-post': BlogPostSelect<false> | BlogPostSelect<true>;
+    'blog-post-author': BlogPostAuthorSelect<false> | BlogPostAuthorSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -158,7 +160,7 @@ export interface BlogPost {
   id: number;
   title: string;
   slug: string;
-  author?: (number | null) | User;
+  author?: (number | null) | BlogPostAuthor;
   'date-published'?: string | null;
   content?: {
     root: {
@@ -180,6 +182,17 @@ export interface BlogPost {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-post-author".
+ */
+export interface BlogPostAuthor {
+  id: number;
+  name: string;
+  title: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -196,6 +209,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'blog-post';
         value: number | BlogPost;
+      } | null)
+    | ({
+        relationTo: 'blog-post-author';
+        value: number | BlogPostAuthor;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -282,6 +299,16 @@ export interface BlogPostSelect<T extends boolean = true> {
   author?: T;
   'date-published'?: T;
   content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-post-author_select".
+ */
+export interface BlogPostAuthorSelect<T extends boolean = true> {
+  name?: T;
+  title?: T;
   updatedAt?: T;
   createdAt?: T;
 }
