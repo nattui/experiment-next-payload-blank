@@ -1,29 +1,15 @@
-// import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import {
-  DefaultNodeTypes,
-  // SerializedBlockNode,
-  SerializedLinkNode,
+  type DefaultNodeTypes,
+  type SerializedLinkNode,
   type DefaultTypedEditorState,
 } from '@payloadcms/richtext-lexical'
 import {
-  JSXConvertersFunction,
+  type JSXConvertersFunction,
   LinkJSXConverter,
   RichText as ConvertRichText,
 } from '@payloadcms/richtext-lexical/react'
 
-// import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component'
-
-// import type {
-//   BannerBlock as BannerBlockProps,
-//   CallToActionBlock as CTABlockProps,
-//   MediaBlock as MediaBlockProps,
-// } from '@/payload-types'
-// import { BannerBlock } from '@/blocks/Banner/Component'
-// import { CallToActionBlock } from '@/blocks/CallToAction/Component'
-// import { cn } from '@/utilities/ui'
-
 type NodeTypes = DefaultNodeTypes
-// | SerializedBlockNode<CTABlockProps | MediaBlockProps | BannerBlockProps>
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { value, relationTo } = linkNode.fields.doc!
