@@ -12,6 +12,14 @@ export const BlogPost: CollectionConfig = {
   access: {
     read: () => true,
   },
+  admin: {
+    useAsTitle: 'title',
+    defaultColumns: ['title', 'slug', 'author', 'date-published'],
+    preview: (data) => `/blog/${data?.slug}`,
+    livePreview: {
+      url: ({ data }) => `/blog/${data?.slug}`,
+    },
+  },
   fields: [
     {
       name: 'title',
