@@ -39,27 +39,30 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) return notFound()
 
   return (
-    <div className={styles.root}>
+    <div className="flex flex-col">
       {draft && <LivePreviewListener />}
 
-      <div className={styles.header}>
-        <Link className={styles.backLink} href="/blog">
+      <div className="mx-auto mt-48 mb-32 flex w-full max-w-[63.6rem] flex-col">
+        <Link
+          className="text-14 mb-16 w-fit text-[#8e8c8f] transition-colors hover:text-[#111013]"
+          href="/blog"
+        >
           ← Back
         </Link>
 
-        <h1 className={styles.title}>{post.title}</h1>
+        <h1 className="font-400 text-36/125 mb-24">{post.title}</h1>
 
         {post.author &&
           typeof post.author === "object" &&
           "name" in post.author && (
-            <p className={styles.author}>
+            <p>
               By {post.author.name}{" "}
-              <span style={{ color: "#8e8c8f" }}>· {post.author.title}</span>
+              <span className="text-[#8e8c8f]">· {post.author.title}</span>
             </p>
           )}
 
         {post["date-published"] && (
-          <p className={styles.date}>
+          <p className="text-14 text-[#8e8c8f]">
             {new Date(post["date-published"]).toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",

@@ -37,6 +37,7 @@
   "editor.formatOnSaveMode": "file",
   "npm.packageManager": "pnpm",
   "peacock.color": "#007fff",
+  "tailwindCSS.rootFontSize": 10,
   "typescript.tsdk": "node_modules/typescript/lib",
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#3399ff",

@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import "@nattui/tailwind-tokenless/styles/10/index.css";
+
+@layer base {
+  .d {
+    border: 1px dashed red;
+  }
+
+  html {
+    font-size: 10px;
+  }
+
+  body {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    color: #111013;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
