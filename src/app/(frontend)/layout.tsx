@@ -1,18 +1,20 @@
-import React from "react"
+import type { PropsWithChildren } from "react"
 import "@/app/(frontend)/global.css"
+import Topbar from "@/components/topbar"
 
 export const metadata = {
-  description: "A blank template using Payload in a Next.js app.",
-  title: "Payload Blank Template",
+  description:
+    "Typeface is an all-in-one enterprise generative AI marketing platform to create personalized, on-brand content at scale. Best generative AI for marketers to create compelling brand stories for any channel, audience and use case.",
+  title:
+    "Typeface - Enterprise Generative AI Platform for Marketing & Content Creation",
 }
 
-export default async function RootLayout(props: { children: React.ReactNode }) {
-  const { children } = props
-
+export default async function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body>
-        <main>{children}</main>
+        <Topbar />
+        {children}
       </body>
     </html>
   )
