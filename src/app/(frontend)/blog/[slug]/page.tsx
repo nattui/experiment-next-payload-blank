@@ -77,6 +77,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <RichText data={post.content} />
         </div>
       )}
+
+      <div className="mx-auto flex w-full max-w-[63.6rem] flex-col">
+        <div className="mb-128 border-t-2 border-solid border-gray-300 pt-24">
+          <p className="text-24">Share</p>
+        </div>
+      </div>
     </div>
   )
 }
