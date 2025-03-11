@@ -39,7 +39,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) return notFound()
 
   return (
-    <div className="flex flex-col">
+    <div className="mt-64 flex flex-col px-20">
       {draft && <LivePreviewListener />}
 
       <div className="mx-auto mt-48 mb-32 flex w-full max-w-[63.6rem] flex-col">
