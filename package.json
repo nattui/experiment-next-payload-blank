@@ -1,9 +1,4 @@
 {
-  "name": "payload-blank",
-  "version": "1.0.0",
-  "description": "A blank template to get started with Payload 3.0",
-  "license": "MIT",
-  "type": "module",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
     "check": "pnpx npm-run-all --parallel check:format check:lint",
@@ -21,7 +16,8 @@
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "update": "pnpx npm-check-updates --upgrade"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "latest",
@@ -30,7 +26,7 @@
     "@payloadcms/payload-cloud": "latest",
     "@payloadcms/richtext-lexical": "latest",
     "cross-env": "^7.0.3",
-    "graphql": "^16.8.1",
+    "graphql": "^16.10.0",
     "next": "15.2.0",
     "payload": "latest",
     "react": "19.0.0",
@@ -38,11 +34,11 @@
     "sharp": "0.32.6"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.2.0",
-    "@types/node": "^22.5.4",
+    "@eslint/eslintrc": "^3.3.0",
+    "@types/node": "^22.13.10",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
-    "eslint": "^9.16.0",
+    "eslint": "^9.22.0",
     "eslint-config-next": "15.2.0",
     "prettier": "^3.5.3",
     "prettier-plugin-css-order": "^2.1.2",
