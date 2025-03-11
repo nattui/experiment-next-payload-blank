@@ -1,5 +1,5 @@
 :root {
-  --font-mono: 'Roboto Mono', monospace;
+  --font-mono: "Roboto Mono", monospace;
 }
 
 * {
@@ -21,11 +21,10 @@ body,
 }
 
 body {
-  font-family: system-ui;
+  margin: 0;
   font-size: 18px;
   line-height: 32px;
-
-  margin: 0;
+  font-family: system-ui;
   /* color: rgb(1000, 1000, 1000); */
 
   @media (max-width: 1024px) {
@@ -35,7 +34,7 @@ body {
 }
 
 img {
+  display: block;
   max-width: 100%;
   height: auto;
-  display: block;
 }

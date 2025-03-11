@@ -1,12 +1,12 @@
-import React from 'react'
-import { notFound } from 'next/navigation'
-import Link from 'next/link'
-import { getPayload } from 'payload'
-import configPromise from '@payload-config'
-import RichText from '@/components/rich-text-renderer'
-import styles from '@/app/(frontend)/blog/[slug]/page.module.css'
-import { draftMode } from 'next/headers'
-import { LivePreviewListener } from '@/app/(frontend)/blog/[slug]/live-preview-listener'
+import React from "react"
+import { notFound } from "next/navigation"
+import Link from "next/link"
+import { getPayload } from "payload"
+import configPromise from "@payload-config"
+import RichText from "@/components/rich-text-renderer"
+import styles from "@/app/(frontend)/blog/[slug]/page.module.css"
+import { draftMode } from "next/headers"
+import { LivePreviewListener } from "@/app/(frontend)/blog/[slug]/live-preview-listener"
 
 export interface BlogPostPageProps {
   params: Promise<{
@@ -22,7 +22,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
 
   const result = await payload.find({
-    collection: 'blog-post',
+    collection: "blog-post",
     draft,
     limit: 1,
     overrideAccess: false,
@@ -49,18 +49,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         <h1 className={styles.title}>{post.title}</h1>
 
-        {post.author && typeof post.author === 'object' && 'name' in post.author && (
-          <p className={styles.author}>
-            By {post.author.name} <span style={{ color: '#8e8c8f' }}>· {post.author.title}</span>
-          </p>
-        )}
+        {post.author &&
+          typeof post.author === "object" &&
+          "name" in post.author && (
+            <p className={styles.author}>
+              By {post.author.name}{" "}
+              <span style={{ color: "#8e8c8f" }}>· {post.author.title}</span>
+            </p>
+          )}
 
-        {post['date-published'] && (
+        {post["date-published"] && (
           <p className={styles.date}>
-            {new Date(post['date-published']).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
+            {new Date(post["date-published"]).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
             })}
           </p>
         )}
@@ -77,7 +80,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
 export async function generateStaticParams() {
   const posts = await payload.find({
-    collection: 'blog-post',
+    collection: "blog-post",
     limit: 1000,
   })
 

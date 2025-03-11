@@ -1,24 +1,24 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from "payload"
 
 export const BlogPostAuthor: CollectionConfig = {
-  slug: 'blog-post-author',
+  slug: "blog-post-author",
   access: {
     read: () => true,
   },
   admin: {
-    useAsTitle: 'name',
-    defaultColumns: ['name', 'title'],
+    useAsTitle: "name",
+    defaultColumns: ["name", "title"],
   },
   fields: [
     {
-      name: 'name',
+      name: "name",
       required: true,
-      type: 'text',
+      type: "text",
     },
     {
-      name: 'title',
+      name: "title",
       required: true,
-      type: 'text',
+      type: "text",
     },
   ],
 }

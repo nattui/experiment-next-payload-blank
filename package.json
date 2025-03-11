@@ -7,15 +7,15 @@
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev --turbopack",
-    "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev --turbopack",
+    "docker": "pnpm docker:build && pnpm docker:run",
+    "docker:build": "docker build --tag next-docker .",
+    "docker:run": "docker run --publish 3000:3000 next-docker",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
-    "docker": "pnpm docker:build && pnpm docker:run",
-    "docker:build": "docker build --tag next-docker .",
-    "docker:run": "docker run --publish 3000:3000 next-docker"
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "latest",
@@ -38,9 +38,14 @@
     "@types/react-dom": "19.0.4",
     "eslint": "^9.16.0",
     "eslint-config-next": "15.2.0",
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.3",
+    "prettier-plugin-css-order": "^2.1.2",
+    "prettier-plugin-packagejson": "^2.5.10",
+    "prettier-plugin-sort-json": "^4.1.1",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "typescript": "5.7.3"
   },
+  "packageManager": "pnpm@10.3.0",
   "engines": {
     "node": "^18.20.2 || >=20.9.0"
   },
@@ -48,6 +53,5 @@
     "onlyBuiltDependencies": [
       "sharp"
     ]
-  },
-  "packageManager": "pnpm@10.3.0"
+  }
 }

@@ -1,7 +1,7 @@
-import { PayloadRequest, CollectionSlug } from 'payload'
+import { PayloadRequest, CollectionSlug } from "payload"
 
 const collectionPrefixMap: Partial<Record<CollectionSlug, string>> = {
-  'blog-post': '/blog',
+  "blog-post": "/blog",
 }
 
 type Props = {
@@ -15,7 +15,7 @@ export const generatePreviewPath = ({ collection, slug }: Props) => {
     slug,
     collection,
     path: `${collectionPrefixMap[collection]}/${slug}`,
-    previewSecret: process.env.PREVIEW_SECRET || '',
+    previewSecret: process.env.PREVIEW_SECRET || "",
   })
 
   const url = `/next/preview?${encodedParams.toString()}`
