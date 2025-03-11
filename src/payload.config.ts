@@ -12,6 +12,7 @@ import { Users } from "./collections/Users"
 import { Media } from "./collections/Media"
 import { BlogPost } from "./collections/blog-post"
 import { BlogPostAuthor } from "./collections/blog-post-author"
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -28,6 +29,12 @@ export default buildConfig({
           url: "/favicon.ico",
         },
       ],
+    },
+    components: {
+      graphics: {
+        // Icon: "/components/logomark",
+        Logo: "/components/logo",
+      },
     },
   },
   collections: [Users, Media, BlogPost, BlogPostAuthor],
