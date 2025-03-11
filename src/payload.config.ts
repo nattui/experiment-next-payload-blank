@@ -32,7 +32,7 @@ export default buildConfig({
     },
     components: {
       graphics: {
-        // Icon: "/components/logomark",
+        Icon: "/components/logomark",
         Logo: "/components/logo",
       },
     },
