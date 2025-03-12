@@ -1,4 +1,5 @@
 import configPromise from "@payload-config"
+import Image from "next/image"
 import { getPayload } from "payload"
 
 export default async function BlogPage() {
@@ -26,19 +27,54 @@ export default async function BlogPage() {
             >
               <div className="aspect-16-9 mb-16 bg-gray-100" />
 
-              <p className="text-20 mb-16">{post.title}</p>
+              <div className="flex h-full flex-col justify-between">
+                <p className="text-20 mb-16">{post.title}</p>
 
-              {post.author &&
-                typeof post.author === "object" &&
-                "name" in post.author && <p className="">{post.author.name}</p>}
+                <div className="flex gap-x-8">
+                  <div className="size-40 bg-gray-100">
+                    {post.author &&
+                      typeof post.author === "object" &&
+                      "image" in post.author &&
+                      post.author.image &&
+                      typeof post.author.image === "object" &&
+                      post.author.image.url && (
+                        <Image
+                          alt={post.author.image.alt}
+                          height={40}
+                          src={post.author.image.url}
+                          width={40}
+                        />
+                      )}
+                  </div>
 
-              <p className="">
-                {new Date(post["date-published"]).toLocaleDateString("en-US", {
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                })}
-              </p>
+                  <div className="flex flex-col">
+                    {post.author &&
+                      typeof post.author === "object" &&
+                      "name" in post.author && (
+                        <p>
+                          {post.author.name}{" "}
+                          {post.author.title && (
+                            <span className="text-[#8e8c8f]">
+                              · {post.author.title}
+                            </span>
+                          )}
+                        </p>
+                      )}
+
+                    <p className="text-14 text-[#8e8c8f]">
+                      {new Date(post["date-published"]).toLocaleDateString(
+                        "en-US",
+                        {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        },
+                      )}{" "}
+                      · 0 min read
+                    </p>
+                  </div>
+                </div>
+              </div>
             </a>
           ))}
         </div>
