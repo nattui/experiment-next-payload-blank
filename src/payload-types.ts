@@ -174,6 +174,7 @@ export interface BlogPost {
   author: number | BlogPostAuthor;
   'date-published': string;
   category?: (number | null) | BlogPostCategory;
+  thumbnail?: (number | null) | Media;
   content?: {
     root: {
       type: string;
@@ -424,6 +425,7 @@ export interface BlogPostSelect<T extends boolean = true> {
   author?: T;
   'date-published'?: T;
   category?: T;
+  thumbnail?: T;
   content?: T;
   updatedAt?: T;
   createdAt?: T;

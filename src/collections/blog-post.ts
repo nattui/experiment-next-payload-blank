@@ -62,6 +62,12 @@ export const BlogPost: CollectionConfig = {
       type: "relationship",
     },
     {
+      name: "thumbnail",
+      relationTo: "media",
+      required: false,
+      type: "upload",
+    },
+    {
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {
           return [

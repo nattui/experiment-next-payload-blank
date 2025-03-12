@@ -24,8 +24,14 @@ export default async function BlogPage() {
               href={`/blog/${post.slug}`}
               key={post.id}
             >
-              <div className="aspect-16-9 mb-16 bg-gray-100" />
-
+              <div className="aspect-16-9 mb-16 bg-gray-100">
+                {post.thumbnail &&
+                  typeof post.thumbnail === "object" &&
+                  "url" in post.thumbnail &&
+                  post.thumbnail.url && (
+                    <img alt={post.thumbnail.alt} src={post.thumbnail.url} />
+                  )}
+              </div>
               <div className="flex h-full flex-col justify-between">
                 {/* Category */}
                 <div className="mb-16 flex flex-col">
