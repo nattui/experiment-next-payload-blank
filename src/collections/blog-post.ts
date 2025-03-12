@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload"
+import { generatePreviewPath } from "@/collections/generate-preview-path"
 import {
   FixedToolbarFeature,
   HeadingFeature,
@@ -6,30 +7,28 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
 } from "@payloadcms/richtext-lexical"
-import { generatePreviewPath } from "@/collections/generate-preview-path"
 
 export const BlogPost: CollectionConfig = {
-  slug: "blog-post",
   access: {
     read: () => true,
   },
   admin: {
-    useAsTitle: "title",
     defaultColumns: ["title", "slug", "author", "date-published"],
-    preview: (data, { req }) =>
-      generatePreviewPath({
-        slug: typeof data?.slug === "string" ? data.slug : "",
-        collection: "blog-post",
-        req,
-      }),
     livePreview: {
       url: ({ data, req }) =>
         generatePreviewPath({
-          slug: typeof data?.slug === "string" ? data.slug : "",
           collection: "blog-post",
           req,
+          slug: typeof data?.slug === "string" ? data.slug : "",
         }),
     },
+    preview: (data, { req }) =>
+      generatePreviewPath({
+        collection: "blog-post",
+        req,
+        slug: typeof data?.slug === "string" ? data.slug : "",
+      }),
+    useAsTitle: "title",
   },
   fields: [
     {
@@ -54,8 +53,6 @@ export const BlogPost: CollectionConfig = {
       type: "date",
     },
     {
-      name: "content",
-      type: "richText",
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {
           return [
@@ -67,8 +64,11 @@ export const BlogPost: CollectionConfig = {
           ]
         },
       }),
+      name: "content",
+      type: "richText",
     },
   ],
+  slug: "blog-post",
   versions: {
     drafts: {
       autosave: {

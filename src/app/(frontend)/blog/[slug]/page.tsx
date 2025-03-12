@@ -1,12 +1,12 @@
-import React from "react"
-import { notFound } from "next/navigation"
-import Link from "next/link"
-import { getPayload } from "payload"
-import configPromise from "@payload-config"
-import RichText from "@/components/rich-text-renderer"
-import { draftMode } from "next/headers"
 import { LivePreviewListener } from "@/app/(frontend)/blog/[slug]/live-preview-listener"
 import "@/app/(frontend)/blog/[slug]/page.css"
+import RichText from "@/components/rich-text-renderer"
+import configPromise from "@payload-config"
+import { draftMode } from "next/headers"
+import Link from "next/link"
+import { notFound } from "next/navigation"
+import { getPayload } from "payload"
+import React from "react"
 
 export interface BlogPostPageProps {
   params: Promise<{
@@ -34,7 +34,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     },
   })
 
-  const post = result.docs?.[0] || null
+  const post = result.docs?.[0] || undefined
 
   if (!post) return notFound()
 
@@ -67,9 +67,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {post["date-published"] && (
               <p className="text-14 text-[#8e8c8f]">
                 {new Date(post["date-published"]).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
                   day: "numeric",
+                  month: "long",
+                  year: "numeric",
                 })}{" "}
                 · 0 min read
               </p>
