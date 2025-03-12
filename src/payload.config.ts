@@ -1,8 +1,6 @@
-// storage-adapter-import-placeholder
-
 import { postgresAdapter } from "@payloadcms/db-postgres"
-import { payloadCloudPlugin } from "@payloadcms/payload-cloud"
 import { lexicalEditor } from "@payloadcms/richtext-lexical"
+import { uploadthingStorage } from "@payloadcms/storage-uploadthing"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { buildConfig } from "payload"
@@ -44,8 +42,16 @@ export default buildConfig({
   }),
   editor: lexicalEditor(),
   plugins: [
-    payloadCloudPlugin(),
-    // storage-adapter-placeholder
+    // payloadCloudPlugin(),
+    uploadthingStorage({
+      collections: {
+        media: true,
+      },
+      options: {
+        acl: "public-read",
+        token: process.env.UPLOADTHING_TOKEN,
+      },
+    }),
   ],
   secret: process.env.PAYLOAD_SECRET || "",
   sharp,
