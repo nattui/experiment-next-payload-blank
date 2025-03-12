@@ -24,14 +24,22 @@ export default async function BlogPage() {
               href={`/blog/${post.slug}`}
               key={post.id}
             >
+              {/* Thumbnail */}
               <div className="aspect-16-9 mb-16 bg-gray-100">
                 {post.thumbnail &&
                   typeof post.thumbnail === "object" &&
                   "url" in post.thumbnail &&
                   post.thumbnail.url && (
-                    <img alt={post.thumbnail.alt} src={post.thumbnail.url} />
+                    <img
+                      alt={post.thumbnail.alt}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                      src={post.thumbnail.url}
+                    />
                   )}
               </div>
+
+              {/* Content */}
               <div className="flex h-full flex-col justify-between">
                 {/* Category */}
                 <div className="mb-16 flex flex-col">
@@ -58,13 +66,14 @@ export default async function BlogPage() {
                       post.author.image.url && (
                         <img
                           alt={post.author.image.alt}
-                          height={40}
+                          className="h-full w-full object-cover"
+                          loading="lazy"
                           src={post.author.image.url}
-                          width={40}
                         />
                       )}
                   </div>
 
+                  {/* Author */}
                   <div className="flex flex-col">
                     {post.author &&
                       typeof post.author === "object" &&
@@ -79,6 +88,7 @@ export default async function BlogPage() {
                         </p>
                       )}
 
+                    {/* Date */}
                     <p className="text-14 text-[#8e8c8f]">
                       {new Date(post["date-published"]).toLocaleDateString(
                         "en-US",

@@ -70,9 +70,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               post.author.image.url && (
                 <img
                   alt={post.author.image.alt}
-                  height={48}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
                   src={post.author.image.url}
-                  width={48}
                 />
               )}
           </div>
@@ -111,7 +111,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             typeof post.thumbnail === "object" &&
             "url" in post.thumbnail &&
             post.thumbnail.url && (
-              <img alt={post.thumbnail.alt} src={post.thumbnail.url} />
+              <img
+                alt={post.thumbnail.alt}
+                className="h-full w-full object-cover"
+                loading="lazy"
+                src={post.thumbnail.url}
+              />
             )}
         </div>
       </div>
