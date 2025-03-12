@@ -1,3 +1,4 @@
+import BlogPostLayout from "@/app/(frontend)/blog/[slug]/layouts"
 import { LivePreviewListener } from "@/app/(frontend)/blog/[slug]/live-preview-listener"
 import "@/app/(frontend)/blog/[slug]/page.css"
 import RichText from "@/components/rich-text-renderer"
@@ -39,10 +40,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) return notFound()
 
   return (
-    <div className="mt-64 flex flex-col">
+    <>
       {draft && <LivePreviewListener />}
 
-      <div className="mx-auto mt-48 mb-36 flex w-full max-w-[63.6rem] flex-col px-20">
+      <BlogPostLayout className="mt-48 mb-36" maxWidth={640} paddingX={20}>
         <div className="flex items-center justify-between">
           <Link
             className="text-14 mb-16 w-fit text-[#8e8c8f] transition-colors hover:text-[#111013]"
@@ -103,7 +104,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             )}
           </div>
         </div>
-      </div>
+      </BlogPostLayout>
 
       <div className="aspect-16-9 mx-auto mb-36 flex h-full w-full max-w-[96rem] flex-col">
         <div className="h-full w-full bg-gray-100">
@@ -123,20 +124,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* Content */}
       {post.content && (
-        <div className="mx-auto flex w-full max-w-[63.6rem] flex-col px-20">
+        <BlogPostLayout maxWidth={640} paddingX={20}>
           <div className="content">
             <RichText data={post.content} />
           </div>
-        </div>
+        </BlogPostLayout>
       )}
 
       {/* Share */}
-      <div className="mx-auto flex w-full max-w-[63.6rem] flex-col px-20">
-        <div className="mb-128 border-t-2 border-solid border-gray-300 pt-24">
+      <BlogPostLayout className="mb-128" maxWidth={640} paddingX={20}>
+        <div className="border-t-2 border-solid border-gray-300 pt-24">
           <p className="text-24">Share</p>
         </div>
-      </div>
-    </div>
+      </BlogPostLayout>
+    </>
   )
 }
 
