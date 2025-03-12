@@ -1,6 +1,7 @@
 export default function Topbar() {
   return (
     <>
+      {/* Topbar */}
       <header className="fixed top-0 right-0 left-0 z-20 flex h-64 items-center justify-between bg-white px-20 shadow-[0px_1px_4px_rgba(0,0,0,0.12)]">
         <div className="mx-auto flex h-full w-full max-w-[96rem] items-center justify-between gap-x-24">
           <div className="flex gap-x-24">
