@@ -1,5 +1,4 @@
 import configPromise from "@payload-config"
-import Image from "next/image"
 import { getPayload } from "payload"
 
 export default async function BlogPage() {
@@ -51,7 +50,7 @@ export default async function BlogPage() {
                       post.author.image &&
                       typeof post.author.image === "object" &&
                       post.author.image.url && (
-                        <Image
+                        <img
                           alt={post.author.image.alt}
                           height={40}
                           src={post.author.image.url}

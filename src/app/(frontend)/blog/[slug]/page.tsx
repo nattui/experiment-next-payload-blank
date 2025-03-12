@@ -3,7 +3,6 @@ import "@/app/(frontend)/blog/[slug]/page.css"
 import RichText from "@/components/rich-text-renderer"
 import configPromise from "@payload-config"
 import { draftMode } from "next/headers"
-import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getPayload } from "payload"
@@ -69,7 +68,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               post.author.image &&
               typeof post.author.image === "object" &&
               post.author.image.url && (
-                <Image
+                <img
                   alt={post.author.image.alt}
                   height={48}
                   src={post.author.image.url}
