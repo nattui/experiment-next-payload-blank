@@ -45,11 +45,13 @@ export const BlogPost: CollectionConfig = {
       hasMany: false,
       name: "author",
       relationTo: "blog-post-author",
+      required: true,
       type: "relationship",
     },
     {
       defaultValue: new Date(),
       name: "date-published",
+      required: true,
       type: "date",
     },
     {

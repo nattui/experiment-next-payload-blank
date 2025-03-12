@@ -21,8 +21,8 @@ import { LinkFeatureClient as LinkFeatureClient_e70f5e05f09f93e00b997edb1ef0c864
 import { RelationshipFeatureClient as RelationshipFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { BlockquoteFeatureClient as BlockquoteFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { UploadFeatureClient as UploadFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
-import { default as default_e8d329eafdff7949042dee803a5fc712 } from 'src/components/logomark'
-import { default as default_6453d4efeb33fd1ead5ac6bbffe223f0 } from 'src/components/logo'
+import { default as default_e8d329eafdff7949042dee803a5fc712 } from '../../../components/logomark'
+import { default as default_6453d4efeb33fd1ead5ac6bbffe223f0 } from '../../../components/logo'
 
 export const importMap = {
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,

@@ -168,8 +168,8 @@ export interface BlogPost {
   id: number;
   title: string;
   slug: string;
-  author?: (number | null) | BlogPostAuthor;
-  'date-published'?: string | null;
+  author: number | BlogPostAuthor;
+  'date-published': string;
   content?: {
     root: {
       type: string;

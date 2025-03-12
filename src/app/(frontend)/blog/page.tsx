@@ -15,11 +15,23 @@ export default async function BlogPage() {
           The Enterprise GenAI Blog
         </h1>
 
-        {posts.docs.map((post) => (
-          <a href={`/blog/${post.slug}`} key={post.id}>
-            {post.title}
-          </a>
-        ))}
+        <div className="mb-128 flex flex-wrap gap-x-32 gap-y-48">
+          {posts.docs.map((post) => (
+            <a
+              className="flex w-full max-w-[calc(1/2*100%-32px)] flex-col transition-opacity hover:opacity-50"
+              href={`/blog/${post.slug}`}
+              key={post.id}
+            >
+              <div className="aspect-16-9 mb-16 bg-gray-100" />
+
+              <p className="text-20 mb-16">{post.title}</p>
+
+              {post.author &&
+                typeof post.author === "object" &&
+                "name" in post.author && <p className="">{post.author.name}</p>}
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   )
