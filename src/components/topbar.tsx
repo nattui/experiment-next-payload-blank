@@ -10,6 +10,7 @@ export default function Topbar() {
       setScrollY(window.scrollY)
     }
 
+    onScroll()
     window.addEventListener("scroll", onScroll)
 
     return () => {
