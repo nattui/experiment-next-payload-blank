@@ -14,12 +14,12 @@ export interface BlogPostPageProps {
   }>
 }
 
-const payload = await getPayload({ config: configPromise })
-
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { isEnabled: draft } = await draftMode()
 
   const { slug } = await params
+
+  const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
     collection: "blog-post",
@@ -101,15 +101,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   )
 }
 
-export async function generateStaticParams() {
-  const posts = await payload.find({
-    collection: "blog-post",
-    limit: 1000,
-  })
+// If I want SSG
+// export async function generateStaticParams() {
+//   const posts = await payload.find({
+//     collection: "blog-post",
+//     limit: 1000,
+//   })
 
-  const params = posts.docs.map((post) => ({
-    slug: post.slug,
-  }))
+//   const params = posts.docs.map((post) => ({
+//     slug: post.slug,
+//   }))
 
-  return params
-}
+//   return params
+// }
