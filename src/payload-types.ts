@@ -198,6 +198,7 @@ export interface BlogPostAuthor {
   id: number;
   name: string;
   title?: string | null;
+  image?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -417,6 +418,7 @@ export interface BlogPostSelect<T extends boolean = true> {
 export interface BlogPostAuthorSelect<T extends boolean = true> {
   name?: T;
   title?: T;
+  image?: T;
   updatedAt?: T;
   createdAt?: T;
 }

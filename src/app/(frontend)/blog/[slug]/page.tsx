@@ -3,6 +3,7 @@ import "@/app/(frontend)/blog/[slug]/page.css"
 import RichText from "@/components/rich-text-renderer"
 import configPromise from "@payload-config"
 import { draftMode } from "next/headers"
+import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getPayload } from "payload"
@@ -38,6 +39,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   if (!post) return notFound()
 
+  console.log(":::::::::: post.author:", post.author)
+
   return (
     <div className="mt-64 flex flex-col">
       {draft && <LivePreviewListener />}
@@ -53,7 +56,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <h1 className="font-400 text-36/125 mb-24">{post.title}</h1>
 
         <div className="flex gap-x-8">
-          <div className="size-48 bg-gray-100" />
+          <div className="size-48 bg-gray-100">
+            {post.author &&
+              typeof post.author === "object" &&
+              "image" in post.author &&
+              post.author.image &&
+              typeof post.author.image === "object" &&
+              post.author.image.url && (
+                <Image
+                  alt={post.author.image.alt}
+                  height={48}
+                  src={post.author.image.url}
+                  width={48}
+                />
+              )}
+          </div>
+
           <div className="flex flex-col items-start">
             {post.author &&
               typeof post.author === "object" &&

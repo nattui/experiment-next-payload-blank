@@ -18,6 +18,11 @@ export const BlogPostAuthor: CollectionConfig = {
       name: "title",
       type: "text",
     },
+    {
+      name: "image",
+      relationTo: "media",
+      type: "upload",
+    },
   ],
   slug: "blog-post-author",
 }
