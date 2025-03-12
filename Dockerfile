@@ -5,8 +5,8 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml* .npmrc* ./
-RUN npm install -g pnpm && pnpm i --frozen-lockfile
+COPY package.json package-lock.json* .npmrc* ./
+RUN npm ci
 
 FROM base AS builder
 WORKDIR /app
@@ -21,7 +21,7 @@ COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN npm install -g pnpm && pnpm run build
+RUN npm run build
 
 FROM base AS runner
 WORKDIR /app
