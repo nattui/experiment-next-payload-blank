@@ -1,3 +1,8 @@
+import { BlogPost } from "@/collections/blog-post"
+import { BlogPostAuthor } from "@/collections/blog-post-author"
+import { BlogPostCategory } from "@/collections/blog-post-category"
+import { Media } from "@/collections/media-2"
+import { Users } from "@/collections/users-1"
 import { postgresAdapter } from "@payloadcms/db-postgres"
 import { lexicalEditor } from "@payloadcms/richtext-lexical"
 import { uploadthingStorage } from "@payloadcms/storage-uploadthing"
@@ -5,10 +10,6 @@ import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { buildConfig } from "payload"
 import sharp from "sharp"
-import { BlogPost } from "./collections/blog-post"
-import { BlogPostAuthor } from "./collections/blog-post-author"
-import { Media } from "./collections/media-2"
-import { Users } from "./collections/users-1"
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -34,7 +35,7 @@ export default buildConfig({
     },
     user: Users.slug,
   },
-  collections: [Users, Media, BlogPost, BlogPostAuthor],
+  collections: [Users, Media, BlogPost, BlogPostAuthor, BlogPostCategory],
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI || "",
@@ -42,7 +43,6 @@ export default buildConfig({
   }),
   editor: lexicalEditor(),
   plugins: [
-    // payloadCloudPlugin(),
     uploadthingStorage({
       collections: {
         media: true,

@@ -70,6 +70,7 @@ export interface Config {
     media: Media;
     'blog-post': BlogPost;
     'blog-post-author': BlogPostAuthor;
+    'blog-post-category': BlogPostCategory;
     'payload-jobs': PayloadJob;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -81,6 +82,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     'blog-post': BlogPostSelect<false> | BlogPostSelect<true>;
     'blog-post-author': BlogPostAuthorSelect<false> | BlogPostAuthorSelect<true>;
+    'blog-post-category': BlogPostCategorySelect<false> | BlogPostCategorySelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -171,6 +173,7 @@ export interface BlogPost {
   slug: string;
   author: number | BlogPostAuthor;
   'date-published': string;
+  category?: (number | null) | BlogPostCategory;
   content?: {
     root: {
       type: string;
@@ -199,6 +202,16 @@ export interface BlogPostAuthor {
   name: string;
   title?: string | null;
   image?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-post-category".
+ */
+export interface BlogPostCategory {
+  id: number;
+  name: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -318,6 +331,10 @@ export interface PayloadLockedDocument {
         value: number | BlogPostAuthor;
       } | null)
     | ({
+        relationTo: 'blog-post-category';
+        value: number | BlogPostCategory;
+      } | null)
+    | ({
         relationTo: 'payload-jobs';
         value: number | PayloadJob;
       } | null);
@@ -406,6 +423,7 @@ export interface BlogPostSelect<T extends boolean = true> {
   slug?: T;
   author?: T;
   'date-published'?: T;
+  category?: T;
   content?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -419,6 +437,15 @@ export interface BlogPostAuthorSelect<T extends boolean = true> {
   name?: T;
   title?: T;
   image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-post-category_select".
+ */
+export interface BlogPostCategorySelect<T extends boolean = true> {
+  name?: T;
   updatedAt?: T;
   createdAt?: T;
 }

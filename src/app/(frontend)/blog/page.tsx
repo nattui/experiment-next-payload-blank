@@ -12,8 +12,8 @@ export default async function BlogPage() {
   })
 
   return (
-    <div className="mt-64 flex flex-col">
-      <div className="mx-auto mt-36 flex w-full max-w-[96rem] flex-col px-20">
+    <div className="mt-64 flex flex-col px-20">
+      <div className="mx-auto mt-36 flex w-full max-w-[96rem] flex-col">
         <h1 className="font-400 text-60/125 mb-96">
           The Enterprise GenAI Blog
         </h1>
@@ -21,15 +21,28 @@ export default async function BlogPage() {
         <div className="mb-128 flex flex-wrap gap-x-32 gap-y-48">
           {posts.docs.map((post) => (
             <a
-              className="flex w-full max-w-[calc(1/2*100%-32px)] flex-col transition-opacity hover:opacity-50"
+              className="flex w-full max-w-[calc(1/2*100%-16px)] flex-col transition-opacity hover:opacity-50"
               href={`/blog/${post.slug}`}
               key={post.id}
             >
               <div className="aspect-16-9 mb-16 bg-gray-100" />
 
               <div className="flex h-full flex-col justify-between">
-                <p className="text-20 mb-16">{post.title}</p>
+                {/* Category */}
+                <div className="mb-16 flex flex-col">
+                  {post.category &&
+                    typeof post.category === "object" &&
+                    "name" in post.category && (
+                      <p className="text-12 mb-6 text-[#fd243e]">
+                        {post.category.name}
+                      </p>
+                    )}
 
+                  {/* Title */}
+                  <p className="text-20">{post.title}</p>
+                </div>
+
+                {/* Author */}
                 <div className="flex gap-x-8">
                   <div className="size-40 bg-gray-100">
                     {post.author &&

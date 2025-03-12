@@ -39,19 +39,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   if (!post) return notFound()
 
-  console.log(":::::::::: post.author:", post.author)
-
   return (
     <div className="mt-64 flex flex-col">
       {draft && <LivePreviewListener />}
 
       <div className="mx-auto mt-48 mb-36 flex w-full max-w-[63.6rem] flex-col px-20">
-        <Link
-          className="text-14 mb-16 w-fit text-[#8e8c8f] transition-colors hover:text-[#111013]"
-          href="/blog"
-        >
-          ← Back
-        </Link>
+        <div className="flex items-center justify-between">
+          <Link
+            className="text-14 mb-16 w-fit text-[#8e8c8f] transition-colors hover:text-[#111013]"
+            href="/blog"
+          >
+            ← Back
+          </Link>
+
+          {post.category &&
+            typeof post.category === "object" &&
+            "name" in post.category && (
+              <p className="text-12 text-[#fd243e]">{post.category.name}</p>
+            )}
+        </div>
 
         <h1 className="font-400 text-36/125 mb-24">{post.title}</h1>
 

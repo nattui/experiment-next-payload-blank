@@ -55,6 +55,13 @@ export const BlogPost: CollectionConfig = {
       type: "date",
     },
     {
+      hasMany: false,
+      name: "category",
+      relationTo: "blog-post-category",
+      required: false,
+      type: "relationship",
+    },
+    {
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {
           return [
