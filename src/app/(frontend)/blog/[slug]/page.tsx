@@ -60,7 +60,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               "name" in post.author && (
                 <p>
                   By {post.author.name}{" "}
-                  <span className="text-[#8e8c8f]">· {post.author.title}</span>
+                  {post.author.title && (
+                    <span className="text-[#8e8c8f]">
+                      · {post.author.title}
+                    </span>
+                  )}
                 </p>
               )}
 

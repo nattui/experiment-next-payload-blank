@@ -196,7 +196,7 @@ export interface BlogPost {
 export interface BlogPostAuthor {
   id: number;
   name: string;
-  title: string;
+  title?: string | null;
   updatedAt: string;
   createdAt: string;
 }
