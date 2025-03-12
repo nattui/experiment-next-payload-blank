@@ -1,6 +1,7 @@
 import type { PropsWithChildren } from "react"
 import "@/app/(frontend)/global.css"
 import Topbar from "@/components/topbar"
+import { fontCssVariables } from "@/utils/fonts"
 
 export const metadata = {
   description:
@@ -11,7 +12,7 @@ export const metadata = {
 
 export default async function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="en">
+    <html className={fontCssVariables} lang="en">
       <body>
         <Topbar />
         {children}
