@@ -16,7 +16,6 @@ export const BlogPostAuthor: CollectionConfig = {
     },
     {
       name: "title",
-      required: true,
       type: "text",
     },
   ],
