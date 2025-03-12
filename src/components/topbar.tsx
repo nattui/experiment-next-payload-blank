@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 
 export default function Topbar() {
   const [scrollY, setScrollY] = useState(0)
+  const [opacity, setOpacity] = useState(0)
 
   useEffect(() => {
     function onScroll() {
@@ -11,6 +12,7 @@ export default function Topbar() {
     }
 
     onScroll()
+    setOpacity(1)
     window.addEventListener("scroll", onScroll)
 
     return () => {
@@ -23,8 +25,8 @@ export default function Topbar() {
       {/* Topbar */}
       <header className="fixed top-0 right-0 left-0 z-20">
         <div
-          className="flex h-128 items-center justify-between px-20"
-          style={{ height: Math.max(128 - scrollY / 2, 64) }}
+          className="flex h-128 items-center justify-between px-20 transition-opacity"
+          style={{ height: Math.max(128 - scrollY / 2, 64), opacity }}
         >
           <div className="mx-auto flex h-full w-full max-w-[96rem] items-center justify-between gap-x-24">
             <div className="flex gap-x-24">
