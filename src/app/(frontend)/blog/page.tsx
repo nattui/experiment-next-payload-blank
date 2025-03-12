@@ -6,6 +6,8 @@ export default async function BlogPage() {
 
   const posts = await payload.find({
     collection: "blog-post",
+    limit: 1000,
+    sort: "-date-published",
   })
 
   return (
@@ -29,6 +31,14 @@ export default async function BlogPage() {
               {post.author &&
                 typeof post.author === "object" &&
                 "name" in post.author && <p className="">{post.author.name}</p>}
+
+              <p className="">
+                {new Date(post["date-published"]).toLocaleDateString("en-US", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </p>
             </a>
           ))}
         </div>
