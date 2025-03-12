@@ -41,7 +41,7 @@ export default function Topbar() {
               </svg>
 
               {/* Nav */}
-              <nav className="flex items-center gap-x-24">
+              <nav className="max-1024:hidden flex items-center gap-x-24">
                 <p className="text-15 font-300 text-[#1d1115]">Product</p>
                 <p className="text-15 font-300 text-[#1d1115]">Use cases</p>
                 <p className="text-15 font-300 text-[#1d1115]">Partners</p>
@@ -51,7 +51,7 @@ export default function Topbar() {
             </div>
 
             <div>
-              <nav className="flex items-center gap-x-24">
+              <nav className="max-480:hidden flex items-center gap-x-24">
                 <p className="text-15 font-300 text-[#1d1115]">Sign in</p>
                 <p className="text-15 font-300 text-[#1d1115]">Sign free</p>
                 <p className="text-15 font-500 flex h-44 items-center bg-red-500 px-16 text-white">

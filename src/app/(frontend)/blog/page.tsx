@@ -18,7 +18,7 @@ export default async function BlogPage() {
       <div className="mb-128 flex flex-wrap gap-x-32 gap-y-48">
         {posts.docs.map((post) => (
           <a
-            className="flex w-full max-w-[calc(1/2*100%-16px)] flex-col transition-opacity hover:opacity-50"
+            className="max-768:max-w-full flex w-full max-w-[calc(1/2*100%-16px)] flex-col transition-opacity hover:opacity-50"
             href={`/blog/${post.slug}`}
             key={post.id}
           >
