@@ -5,7 +5,7 @@ import RichText from "@/components/rich-text-renderer"
 import configPromise from "@payload-config"
 import { draftMode } from "next/headers"
 import Link from "next/link"
-import { notFound } from "next/navigation"
+import { redirect } from "next/navigation"
 import { getPayload } from "payload"
 import React from "react"
 
@@ -29,6 +29,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     overrideAccess: false,
     pagination: false,
     where: {
+      _status: {
+        equals: "published",
+      },
       slug: {
         equals: slug,
       },
@@ -37,7 +40,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const post = result.docs?.[0] || undefined
 
-  if (!post) return notFound()
+  if (!post) redirect("/blog")
 
   return (
     <>
