@@ -9,6 +9,11 @@ export default async function BlogPage() {
     collection: "blog-post",
     limit: 1000,
     sort: "-date-published",
+    where: {
+      _status: {
+        equals: "published",
+      },
+    },
   })
 
   return (
