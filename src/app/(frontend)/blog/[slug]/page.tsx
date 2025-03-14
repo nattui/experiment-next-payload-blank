@@ -106,7 +106,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
       </BlogPostLayout>
 
-      <div className="aspect-16-9 mx-auto mb-36 flex h-full w-full max-w-[96rem] flex-col">
+      <div className="mx-auto mb-36 flex h-full w-full max-w-[96rem] flex-col">
         <div className="h-full w-full bg-gray-100">
           {post.thumbnail &&
             typeof post.thumbnail === "object" &&
