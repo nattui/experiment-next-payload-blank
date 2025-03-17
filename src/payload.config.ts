@@ -5,7 +5,7 @@ import { Media } from "@/collections/media-2"
 import { Users } from "@/collections/users-1"
 import { postgresAdapter } from "@payloadcms/db-postgres"
 import { lexicalEditor } from "@payloadcms/richtext-lexical"
-import { uploadthingStorage } from "@payloadcms/storage-uploadthing"
+import { azureStorage } from "@payloadcms/storage-azure"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { buildConfig } from "payload"
@@ -43,14 +43,15 @@ export default buildConfig({
   }),
   editor: lexicalEditor(),
   plugins: [
-    uploadthingStorage({
+    azureStorage({
+      allowContainerCreate:
+        (process.env.AZURE_STORAGE_ALLOW_CONTAINER_CREATE ?? "") === "true",
+      baseURL: process.env.AZURE_STORAGE_ACCOUNT_BASEURL ?? "",
       collections: {
         media: true,
       },
-      options: {
-        acl: "public-read",
-        token: process.env.UPLOADTHING_TOKEN,
-      },
+      connectionString: process.env.AZURE_STORAGE_CONNECTION_STRING ?? "",
+      containerName: process.env.AZURE_STORAGE_CONTAINER_NAME ?? "",
     }),
   ],
   secret: process.env.PAYLOAD_SECRET || "",

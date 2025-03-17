@@ -25,6 +25,7 @@
     "@payloadcms/live-preview-react": "^3.28.0",
     "@payloadcms/next": "^3.28.0",
     "@payloadcms/richtext-lexical": "^3.28.0",
+    "@payloadcms/storage-azure": "^3.28.1",
     "@payloadcms/storage-uploadthing": "^3.28.0",
     "@tailwindcss/postcss": "^4.0.13",
     "cross-env": "^7.0.3",
